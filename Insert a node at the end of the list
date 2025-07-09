@@ -1,0 +1,30 @@
+class Node:
+    def _init_(self, data):
+        self.data = data
+        self.next = None
+
+# Assume head is the start of the linked list
+head = Node(1)
+head.next = Node(2)
+head.next.next = Node(3)
+
+# Function to insert at the end
+def insert_at_end(head, data):
+    new_node = Node(data)
+    if head is None:
+        return new_node
+    current = head
+    while current.next:
+        current = current.next
+    current.next = new_node
+    return head
+
+# Insert new node with value 4
+head = insert_at_end(head, 4)
+
+# To verify, print list
+current = head
+while current:
+    print(current.data, end=" -> " if current.next else "")
+    current = current.next
+print()
