@@ -1,0 +1,22 @@
+class Node:
+    def _init_(self, data):
+        self.data = data
+        self.next = None
+
+# Create initial list with 2 nodes
+head = Node("B")
+head.next = Node("C")
+
+def insert_at_beginning(head, data):
+    new_node = Node(data)
+    new_node.next = head
+    return new_node
+
+head = insert_at_beginning(head, "A")
+
+# Display to verify
+current = head
+while current:
+    print(current.data, end=" -> " if current.next else "")
+    current = current.next
+print()
