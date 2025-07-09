@@ -1,0 +1,21 @@
+class Node:
+    def _init_(self, data):
+        self.data = data
+        self.next = None
+
+# Build a simple list for example
+head = Node("A")
+head.next = Node("B")
+head.next.next = Node("C")
+
+def display(head):
+    if head is None:
+        print("List is empty.")
+        return
+    current = head
+    while current:
+        print(current.data, end=" -> " if current.next else "")
+        current = current.next
+    print()
+
+display(head)
