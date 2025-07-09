@@ -1,0 +1,38 @@
+class Node:
+    def _init_(self, data):
+        self.data = data
+        self.next = None
+
+# Example list: 1 -> 2 -> 4 -> 5
+head = Node(1)
+head.next = Node(2)
+head.next.next = Node(4)
+head.next.next.next = Node(5)
+
+def insert_at_position(head, position, data):
+    new_node = Node(data)
+    if position == 1:  # Insert at the beginning
+        new_node.next = head
+        return new_node
+    current = head
+    for _ in range(position - 2):  # Move to node before position
+        if current is None:
+            print("Position out of range")
+            return head
+        current = current.next
+    if current is None:
+        print("Position out of range")
+        return head
+    new_node.next = current.next
+    current.next = new_node
+    return head
+
+# Insert '3' at position 3
+head = insert_at_position(head, 3, 3)
+
+# Print to verify: should print 1 -> 2 -> 3 -> 4 -> 5
+current = head
+while current:
+    print(current.data, end=" -> " if current.next else "")
+    current = current.next
+print()
