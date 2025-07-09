@@ -1,0 +1,22 @@
+class Node:
+    def _init_(self, data):
+        self.data = data
+        self.next = None
+
+# Create head node with first input
+head = Node(input("Enter value 1: "))
+current = head
+
+# Add next 4 nodes
+for i in range(2, 6):
+    new_node = Node(input(f"Enter value {i}: "))
+    current.next = new_node
+    current = new_node
+
+# Print linked list
+print("Linked list values:")
+current = head
+while current:
+    print(current.data, end=" -> " if current.next else "")
+    current = current.next
+print()
